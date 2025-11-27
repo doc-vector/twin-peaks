@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hemoglobin HPLC Result Assistant — v1.0</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="brand">
+        <h1>Hemoglobin HPLC Result Assistant</h1>
+        <div class="meta">Version 1.0 — Minimal / Clinical theme</div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <div class="card">
+        <h3>CBC Indices</h3>
+        <div class="field"><label>Hemoglobin (g/dL)</label><input id="hb" type="number" step="0.1" placeholder="e.g., 12.3"></div>
+        <div class="field"><label>RBC Count (million/µL)</label><input id="rbc" type="number" step="0.01" placeholder="e.g., 4.5"></div>
+        <div class="field"><label>MCV (fL)</label><input id="mcv" type="number" step="0.1" placeholder="e.g., 78"></div>
+        <div class="field"><label>MCH (pg)</label><input id="mch" type="number" step="0.1" placeholder="e.g., 26"></div>
+        <div class="field"><label>RDW-CV (%)</label><input id="rdw" type="number" step="0.1" placeholder="e.g., 13"></div>
+      </div>
+
+      <div class="card">
+        <h3>HPLC Indices</h3>
+        <div class="field"><label>F-window (%)</label><input id="f_pct" type="number" step="0.1" placeholder="e.g., 1.2"></div>
+        <div class="field"><label>A2-window (%)</label><input id="a2_pct" type="number" step="0.1" placeholder="e.g., 2.9"></div>
+        <div class="field"><label>C-window (%)</label><input id="c_pct" type="number" step="0.1" placeholder="e.g., 0"></div>
+        <div class="field"><label>D-window (%)</label><input id="d_pct" type="number" step="0.1" placeholder="e.g., 0"></div>
+        <div class="field"><label>S-window (%)</label><input id="s_pct" type="number" step="0.1" placeholder="e.g., 0"></div>
+        <div class="field"><label>Unknown variant retention time (minutes)</label><input id="other_ret" type="number" step="0.01" placeholder="e.g., 0"></div>
+        <div class="field"><label>Unknown variant (%)</label><input id="other_pct" type="number" step="0.1" placeholder="e.g., 0"></div>
+      </div>
+    </div>
+
+    <div class="actions-row">
+      <div class="actions">
+        <button class="cta" id="calc">Calculate</button>
+        <button class="cta secondary" id="reset">Reset</button>
+        <div class="small">No authentication. Offline single-user app. Mobile responsive.</div>
+      </div>
+
+      <div id="partialWarning" class="warning" style="display:none">
+        ⚠️ PARTIAL DATA - Limited Confidence<br>
+        Missing required fields. Results are preliminary. Complete all parameters for higher differential diagnosis accuracy. Clinical correlation &amp; molecular confirmation essential.
+      </div>
+
+      <div id="results" class="results card" style="display:none">
+        <h3>Results</h3>
+        <div id="resultsList"></div>
+        <div class="note" style="margin-top:8px">
+          Legal/medical Disclaimer: This application provides decision support for hemoglobinopathy interpretation based on HPLC/CBC parameters and is intended solely for use by qualified medical professionals exercising independent clinical judgment.
+          <br><br>
+          The tool outputs are algorithmic aids derived from published data and do not constitute formal medical diagnosis, treatment recommendations, or substitutes for comprehensive clinical evaluation, including patient history, physical examination, and confirmatory testing.
+          <br><br>
+          Developers/providers disclaim all liability for clinical decisions, outcomes, or damages arising from application use. Users must correlate results with full clinical context and validate with molecular/genetic testing as indicated.
+          <br><br>
+          By using this tool, healthcare professionals acknowledge their responsibility for all diagnostic and therapeutic decisions.
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div>© 2025 Dr. Vineeth G Nair, MD (Pathology). All rights reserved.<br>Hemoglobinopathy Decision Support App - Developed in India for Clinical Use. Unauthorized reproduction prohibited.</div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
